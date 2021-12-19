@@ -6,7 +6,8 @@ import requests as req
 import configparser
 
 def get_images(b64, config):
-  data = '{"analyzeSpecs": [{"features": [{"type": "FACE_DETECTION"}],"content":"' + b64.decode('utf-8') + '"}]}'
+  folder_id = "b1grguml21m8dm6rbrmi"
+  data = '{"folderId": "'+ folder_id +'", "analyzeSpecs": [{"features": [{"type": "FACE_DETECTION"}],"content":"' + b64.decode('utf-8') + '"}]}'
   config.read('/function/code/config/keys.ini')
   secret_key = config['yacloud']['api_key']
   url = 'https://vision.api.cloud.yandex.net/vision/v1/batchAnalyze'
